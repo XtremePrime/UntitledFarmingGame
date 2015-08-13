@@ -1,8 +1,14 @@
 #include <iostream>
 #include <cstdlib>
 #include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+
+#include "game.h"
 
 int main(int argc, char** argv)
 {
-    return EXIT_SUCCESS;
+	Game game;
+	game.run();
+
+	return EXIT_SUCCESS;
 }
