@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iostream>
 #include <SFML/Window.hpp>
+#include <stdexcept>
 
 GameState* GameState::_instance;
 
@@ -37,7 +38,14 @@ void GameState::handle_events(Game* game, sf::Event event)
 
 void GameState::update(Game* game,  sf::Time deltaTime)
 {
+	cursor = sf::Mouse::getPosition(*game->get_window());
 	level.update(deltaTime);
+	try{
+		std::cout << level.get_tile(cursor.x, cursor.y)->id << "\n";
+	}catch(const std::out_of_range& oor){
+		
+	}
+	
 }
 
 void GameState::render(Game* game)

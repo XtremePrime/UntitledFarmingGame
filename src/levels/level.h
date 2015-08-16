@@ -8,9 +8,10 @@
 class Level
 {
 private:
-	const int SIZE_X = 20, SIZE_Y = 20;
+	const int SIZE_X = 5, SIZE_Y = 5;
 	std::vector<Tile*> tiles;
 	sf::View view;
+	sf::Vector2u map_size;
 public:
 	void init();
 
@@ -18,6 +19,7 @@ public:
 	void render(sf::RenderWindow*);
 	void update(sf::Time);
 
+	Tile* get_tile(int, int);
 	sf::View& get_view() {return this->view;} 
 };
 

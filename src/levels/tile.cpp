@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Tile::Tile(int xx, int yy, std::string file)
+Tile::Tile(int id, int xx, int yy, std::string file)
 {
 	txr.loadFromFile(file);
 	sprite.setTexture(txr);
@@ -11,6 +11,7 @@ Tile::Tile(int xx, int yy, std::string file)
 	this->y = yy;
 	this->w = 32;
 	this->h = 16;
+	this->id = id;
 
 	sprite.setPosition(sf::Vector2f(x, y));
 }

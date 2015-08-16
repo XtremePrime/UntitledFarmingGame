@@ -12,7 +12,7 @@ void Level::init()
 		int x = (int)i%SIZE_X, y = (int)floor(i/SIZE_Y);
 		#define xgen (x*32/2)+(y*32/2)
 		#define ygen (y*16/2)-(x*16/2)
-		tiles.push_back(new Tile(X_OFFSET+xgen, Y_OFFSET+ygen, "res/grass.png"));
+		tiles.push_back(new Tile(i, X_OFFSET+xgen, Y_OFFSET+ygen, "res/grass.png"));
 		std::cout << "Tile[" << i << "] generated at " << xgen << "," << ygen << "\n";
 		#undef xgen
 		#undef ygen
@@ -21,6 +21,9 @@ void Level::init()
 	#undef Y_OFFSET
 
 	view.reset(sf::FloatRect(860/2-(860/2)/2, 640/2-(640/2)/2, 860/2, 640/2));
+
+	map_size.x = SIZE_X*32;
+	map_size.y = SIZE_Y*16;
 }
 
 void Level::handle_events(sf::Event ev)
@@ -38,4 +41,14 @@ void Level::render(sf::RenderWindow* window)
 void Level::update(sf::Time deltaTime)
 {
 
+}
+
+Tile* Level::get_tile(int x, int y)
+{
+	// int xa = /*(860/2-(SIZE_X/2)*32) + */((x*32/2)+(y*32/2));
+	// int ya = /*(640/2) + */((y*16/2)-(x*16/2));
+	int xa = floor(x/32);
+	int ya = floor(y/32);
+	std::cout << xa << "," << ya << "\n";
+	return tiles.at(xa * SIZE_X + ya);
 }

@@ -9,9 +9,10 @@ private:
 	sf::Texture txr;
 	sf::Sprite sprite;
 
-	int x, y, w, h;
+	int x, y, w, h;	
 public:
-	Tile(int, int, std::string);
+	int id = -1;
+	Tile(int, int, int, std::string);
 	void render(sf::RenderWindow*);
 
 	sf::Sprite& get_sprite(){return this->sprite;}

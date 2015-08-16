@@ -12,6 +12,7 @@ class GameState : public State
 {
 private:
 	Level level;
+	sf::Vector2i cursor;
 protected:
 	static GameState* _instance;
 	GameState(){}
